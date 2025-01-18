@@ -1,21 +1,19 @@
-export async function authHandler() {
+export async function authHandler(action,user) {
   const response = await fetch(
-    `https://kohls.p.rapidapi.com/products/list?limit=24&offset=1&dimensionValueID=AgeAppropriate%3ATeens`,
+    `https://academyofdigitalindustriesbackend.onrender.com/api/v1/auth/${action}`,
     {
-      method: "GET",
-      headers: {
-        'x-rapidapi-key': '2b68a7c7aamsh4e9bc19bfe15d62p1bbc33jsnf60319b38b47',
-        'x-rapidapi-host': 'kohls.p.rapidapi.com'
-      }
+      method: "POST",
+      body:JSON.stringify(user),
+      headers: { "Content-type":"application/json" },
     }
   );
 
-  const result = response.json();
-
+  const result = await response.json();
   if (response.ok) {
     return result;
   }
-  throw new Error(result.msg || "error messagge");
+  throw new Error(result.msg);
+  
 
 }
 
