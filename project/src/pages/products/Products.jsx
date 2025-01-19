@@ -16,7 +16,7 @@ const Products = () => {
   }, []);
 
   return (
-    <div>
+    <section className="flex flex-wrap justify-center gap-[30px]">
       {data.payload?.products?.map((info) => (
        <Card key={info.productId} data={info}/>
       ))}
@@ -24,7 +24,7 @@ const Products = () => {
   color="#522323"
   size={80}
 />}
-    </div>
+</section>
   );
 };
 
