@@ -2,6 +2,7 @@ import React from "react";
 import { UseAppContext } from "../context/AppContextProvider";
 import { Navigate } from "react-router-dom";
 import { routes } from "../constant/route";
+import "../../reset.css"
 
 const GuestGuard = ({ children }) => {
   const { state } = UseAppContext();

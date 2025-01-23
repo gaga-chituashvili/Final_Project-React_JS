@@ -1,28 +1,29 @@
-import {Actions} from "./action"
+import { Actions } from "./action";
 
+export const authenticated = (token) => {
+  return { type: Actions.AUTHENTICATE, payload: token };
+};
 
-export const fetchUserAction=(payload)=>{
-    return{
-        type:Actions.userFetch,
-        payload,
-    }
-        
-}
+// export const RegisterAction = (data) => {
+//   return { type: Actions.REGISTER, payload: data };
+// };
 
+export const LoginAction = (data) => {
+  return { type: Actions.LOG_IN, payload: data };
+};
 
-export const UserErrorAction = (payload) => {
-    return {
-      type: userError,
-      payload,
-    };
-  };
-  
-  export const userLoadingAction = (payload) => {
-    return {
-      type: userLoading,
-      payload,
-    };
-  };
-  
- 
-  
+export const LogoutAction = () => {
+  return { type: Actions.LOG_OUT };
+};
+
+export const DataAction = (payload) => {
+  return { type: Actions.DATA, payload };
+};
+
+export const ErrorAction = (payload) => {
+  return { type: Actions.ERORR, payload };
+};
+
+export const LoadingAction = (payload) => {
+  return { type: Actions.LOADING, payload };
+};

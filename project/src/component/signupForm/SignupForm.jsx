@@ -1,13 +1,18 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { authHandler } from "../../api/auth";
 import { authAction } from "../../constant/authAction";
 import Error from "../error/Error";
 import { MoonLoader } from "react-spinners";
 import "../../reset.css";
+import { UseAppContext } from "../../context/AppContextProvider";
+import { ErrorAction, LoadingAction } from "../../context/actionCreator";
 
 const SignupForm = () => {
-  const [error, seterror] = useState("");
-  const [loading, setloading] = useState(false);
+ 
+
+  const{state,dispatch}=UseAppContext()
+  
+  const {error,loading}=state
 
   const [user, setuser] = useState({
     userName: "",
@@ -25,22 +30,26 @@ const SignupForm = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setloading(true);
+    dispatch(LoadingAction(true))
     authHandler(authAction.signUp, user)
       .then((data) => console.log(data))
-      .catch((err) => seterror(err))
-      .finally(() => setloading(false));
+      .catch((err) => {dispatch(ErrorAction(err.msg))})
+      .finally(() => {dispatch(LoadingAction(false))});
   };
 
+  
+
+  
+
   return (
-    <section className="flex justify-center py-[200px]">
+    <section className="flex flex-col items-center gap-y-[30px]">
       <form
-        className="w-[400px] flex flex-col gap-y-[10px] border border-solid border-black p-[40px] rounded-[20px]"
+        className="w-[400px] flex flex-col gap-y-[10px] border border-solid border-black p-[40px] rounded-[20px] bg-slate-300"
         onSubmit={submitHandler}
       >
         <label>UserName</label>
         <input
-          className="border border-solid border-black"
+          className="h-[30px] rounded-[10px] border border-solid border-black"
           name="userName"
           onChange={(e) => {
             setuser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -48,7 +57,7 @@ const SignupForm = () => {
         />
         <label>Email</label>
         <input
-          className="border border-solid border-black"
+          className="h-[30px] rounded-[10px] border border-solid border-black bg-slate-100"
           name="email"
           onChange={(e) => {
             setuser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -56,13 +65,13 @@ const SignupForm = () => {
         />
         <label>Password</label>
         <input
-          className="border border-solid border-black"
+          className="h-[30px] rounded-[10px] border border-solid border-black bg-slate-100"
           name="password"
           onChange={(e) => {
             setuser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
           }}
         />
-        <button type="submit">Submit</button>
+        <button className='hover:bg-red-500 px-[10px] py-[10px] rounded-2xl' type="submit">Submit</button>
       </form>
       {loading && <MoonLoader color="#522323" size={80} />}
     </section>

@@ -4,50 +4,49 @@ import { authHandler } from "../../api/auth";
 import { authAction } from "../../constant/authAction";
 import { MoonLoader } from "react-spinners";
 import "../../reset.css";
-import { LoginAction } from "../../context/actionCreator";
+import { ErrorAction, LoadingAction, LoginAction } from "../../context/actionCreator";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../constant/route";
 
-const Signin = () => {
+const SignForm = () => {
   const navigate = useNavigate();
 
-  const [loading, setloading] = useState(false);
+
 
   const { state, dispatch } = UseAppContext();
+  const {loading}=state
 
   const [info, setinfo] = useState({
     userName: "",
     password: "",
-    error: "",
   });
 
   const submitSignHandler = (e) => {
     e.preventDefault();
-    setloading(true);
+    dispatch(LoadingAction(true))
     authHandler(authAction.signIn, info)
       .then((data) => {
         dispatch(LoginAction(data));
-        navigate(routes.home);
+        navigate(routes.products);
       })
       .catch((error) => {
-        setinfo((prev) => ({ ...prev, error: error.message }));
+        dispatch(ErrorAction(error.msg));
       })
-      .finally(() => setloading(false));
+      .finally(() =>{dispatch(LoadingAction(false))});
   };
 
-  console.log(state, info);
 
   return (
-    <section className="flex  justify-center py-[200px]">
+    <section className="flex flex-col items-center gap-y-[30px]">
       <form
         onSubmit={submitSignHandler}
-        className="w-[400px] flex flex-col gap-y-[10px] border border-solid border-black p-[40px] rounded-[20px]"
+        className="w-[400px] flex flex-col gap-y-[10px] border border-solid border-black p-[40px] rounded-[20px] bg-slate-300"
       >
         <lable>UserName or Email</lable>
         <input
           type="text"
           name="userName"
-          className="border border-solid border-black"
+          className="h-[30px] rounded-[10px] border border-solid border-black bg-slate-100"
           onChange={(e) =>
             setinfo((prev) => ({ ...prev, [e.target.name]: e.target.value }))
           }
@@ -56,16 +55,16 @@ const Signin = () => {
         <input
           type="text"
           name="password"
-          className="border border-solid border-black"
+          className="h-[30px] rounded-[10px] border border-solid border-black bg-slate-100"
           onChange={(e) =>
             setinfo((prev) => ({ ...prev, [e.target.name]: e.target.value }))
           }
         />
-        <button type="submit">submit</button>
+        <button className='hover:bg-red-500 px-[10px] py-[10px] rounded-2xl' type="submit">submit</button>
       </form>
       {loading && <MoonLoader color="#522323" size={80} />}
     </section>
   );
 };
 
-export default Signin;
+export default SignForm;

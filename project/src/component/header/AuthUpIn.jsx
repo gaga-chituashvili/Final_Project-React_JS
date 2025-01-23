@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../../reset.css";
 import { authAction } from "../../constant/authAction";
 import "../../reset.css"
 
@@ -15,7 +14,7 @@ const AuthUpIn = () => {
       <ul className="flex gap-x-[30px] text-[30px]">
       {Approutes.map(([key, value]) => (
           <li
-            className="cursor-pointer border border-solid border-black"
+            className="cursor-pointer px-6 py-3 text-white rounded-lg hover:bg-red-500"
             key={key}
             onClick={() => navigate(value)}
            >

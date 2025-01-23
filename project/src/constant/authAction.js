@@ -1,5 +1,5 @@
-const signUp="register";
-const signIn="login";
+const signUp="/register";
+const signIn="/login";
 
 
 export const authAction={

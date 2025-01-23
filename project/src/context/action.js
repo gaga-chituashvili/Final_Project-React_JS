@@ -1,13 +1,17 @@
-const loginin="login-in";
-const loginup="login-up";
-const userFetch="userFetch";
-const userError="userError";
-const userLoading="userLoading";
+const AUTHENTICATE="AUTHENTICATE";
+const REGISTER="REGISTER";
+const LOG_IN="LOG_IN";
+const LOG_OUT="LOG_OUT";
+const DATA="DATA";
+const ERORR="ERROR";
+const LOADING="LOADING";
 
 export const Actions={
-    loginin,
-    loginup,
-    userFetch,
-    userError,
-    userLoading
+    AUTHENTICATE,
+    LOG_IN,
+    LOG_OUT,
+    DATA,
+    ERORR,
+    LOADING,
+    REGISTER,
 }

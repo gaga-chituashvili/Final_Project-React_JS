@@ -1,12 +1,14 @@
 import "./App.css";
 import Approutes from "./Approutes";
-import Navbar from "./component/Navbar";
+import Footer from "./component/footer/Footer";
+import Header from "./component/header/Header";
 
 function App() {
   return (
-    <section className="flex flex-col justify-center items-center gap-y-[70px]">
-      <Navbar />
+    <section className="flex flex-col justify-center items-center pt-[130px] bg-mainbackcolor">
+      <Header/>
       <Approutes />
+      <Footer/>
     </section>
   );
 }

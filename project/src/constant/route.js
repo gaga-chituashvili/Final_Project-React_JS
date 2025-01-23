@@ -1,11 +1,9 @@
 const home="/";
 const products="/products";
-const signin="/sign-in";
-const signup="/sign-up";
+const contact="/contact";
 
 export const routes={
     home,
     products,
-    signin,
-    signup,
+    contact,
 }
