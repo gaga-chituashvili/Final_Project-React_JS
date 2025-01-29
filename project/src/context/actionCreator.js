@@ -4,10 +4,6 @@ export const authenticated = (token) => {
   return { type: Actions.AUTHENTICATE, payload: token };
 };
 
-// export const RegisterAction = (data) => {
-//   return { type: Actions.REGISTER, payload: data };
-// };
-
 export const LoginAction = (data) => {
   return { type: Actions.LOG_IN, payload: data };
 };
@@ -26,4 +22,8 @@ export const ErrorAction = (payload) => {
 
 export const LoadingAction = (payload) => {
   return { type: Actions.LOADING, payload };
+};
+
+export const AddToCartAction = (product) => {
+  return { type: Actions.ADD_TO_CART, payload: product };
 };

@@ -9,10 +9,10 @@ const AuthGuard = ({children}) => {
     const {state}=UseAppContext()
   return (
    
-    <section className="w-full flex justify-center py-[250px] 
+    <section className="w-full flex justify-center py-[100px] 
 bg-[url('/src/guard/images/image11.png')] bg-no-repeat bg-cover bg-left">
       {state.isAuthenticated?(children):(
-        <section className='w-[400px] flex flex-col items-center gap-y-[40px] p-[40px] border border-solid border-black rounded-[20px] bg-slate-700'>
+        <section className='w-[400px] flex flex-col items-center gap-y-[40px] p-[40px] border border-solid border-black rounded-[20px] bg-slate-700 my-[200px]'>
             <h5 className='text-[20px] text-white'>You Are Not Authenticated</h5>
             <h5 className='text-[20px] text-white'>Please Sign IN OR Sign UP</h5>
             <article className='flex gap-x-[40px]'>

@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        move: 'move 5s linear infinite', // Custom animation (move in 5 seconds)
+        move: 'move 5s linear infinite', 
       },
       keyframes: {
         move: {

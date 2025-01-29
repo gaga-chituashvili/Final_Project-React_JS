@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <nav >
-      <ul className="flex gap-x-[30px] text-[30px]">
+      <ul className="header_ul flex gap-x-[30px] text-[30px]">
         {Approutes.map(([key, value]) => (
           <li
             className="cursor-pointer px-6 py-3 text-white rounded-lg hover:bg-red-500"
