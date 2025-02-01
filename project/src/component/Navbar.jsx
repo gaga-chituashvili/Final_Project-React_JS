@@ -14,7 +14,7 @@ const Navbar = () => {
         {Approutes.map(([key, value]) => (
           <li
             className="cursor-pointer"
-            key={key} 
+            key={key}
             onClick={() => navigate(value)}
           >
             {key}

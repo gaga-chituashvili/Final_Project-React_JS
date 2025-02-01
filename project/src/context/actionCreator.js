@@ -29,7 +29,6 @@ export const AddToCartAction = (product) => {
 };
 
 export const RemoveFromCartAction = (productId) => ({
-  type: Actions.RemoveFromCartAction,
+  type: Actions.REMOVEFROMCART,
   payload: productId,
 });
-

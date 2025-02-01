@@ -31,17 +31,16 @@ export const Reducer = (state, action) => {
       return { ...state, error: payload, loading: false };
     case Actions.LOADING:
       return { ...state, loading: payload };
-      case Actions.ADD_TO_CART:
+    case Actions.ADD_TO_CART:
       const updatedCart = [...state.cart, payload];
-      localStorage.setItem('cart', JSON.stringify(updatedCart));  
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
       return { ...state, cart: updatedCart };
-      case Actions.RemoveFromCartAction:
-        return {
-          ...state,
-          cart: state.cart.filter((item) => item.productId !== payload),
-        };
+    case Actions.REMOVEFROMCART:
+      return {
+        ...state,
+        cart: state.cart.filter((item) => item.productId !== payload),
+      };
     default:
       return state;
   }
 };
-

@@ -6,9 +6,9 @@ import Header from "./component/header/Header";
 function App() {
   return (
     <section className="flex flex-col justify-center items-center pt-[130px] bg-mainbackcolor app">
-      <Header/>
+      <Header />
       <Approutes />
-      <Footer/>
+      <Footer />
     </section>
   );
 }

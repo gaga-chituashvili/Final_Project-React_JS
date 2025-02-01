@@ -1,9 +1,9 @@
-const home="/";
-const products="/products";
-const contact="/contact";
+const home = "/";
+const products = "/products";
+const contact = "/contact";
 
-export const routes={
-    home,
-    products,
-    contact,
-}
+export const routes = {
+  home,
+  products,
+  contact,
+};

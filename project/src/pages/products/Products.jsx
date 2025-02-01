@@ -19,7 +19,6 @@ const Products = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const searchQuery = searchParams.get("search");
-
   const [showScrollButton, setShowScrollButton] = useState(false);
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -44,7 +43,7 @@ const Products = () => {
       } else {
         setShowScrollButton(false);
       }
-      setLastScrollTop(currentScroll <= 0 ? 0 : currentScroll);
+      setLastScrollTop(currentScroll || 50);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -59,6 +58,8 @@ const Products = () => {
       .toLowerCase()
       .includes(searchQuery?.toLowerCase() || "")
   );
+
+  console.log(data?.payload?.products[0]);
 
   const hasProducts = filteredProducts?.length > 0;
 
@@ -100,26 +101,53 @@ const Products = () => {
                   : "transform translate-x-full"
               }`}
             >
-              <ul className="p-4">
+              <section className="p-4">
                 {cart.length > 0 ? (
-                  cart.map((product, index) => (
-                    <li
-                      key={index}
-                      className="flex justify-between items-center py-2"
-                    >
-                      <p>{product.productTitle}</p>
-                      <img
-                        className="w-[20px] cursor-pointer"
-                        src={xmark}
-                        alt="Remove"
-                        onClick={() => handleRemoveFromCart(product.productId)}
-                      />
-                    </li>
-                  ))
+                  <>
+                    {cart.map((product, index) => (
+                      <article
+                        key={index}
+                        className="flex justify-between items-center gap-x-[20px] py-2"
+                      >
+                        <article className="flex">
+                          <p>{product.productTitle}</p>
+                          <article className="flex justify-center items-center">
+                            <p>{product.prices[0].regularPrice.minPrice}</p>
+                            <p>$</p>
+                          </article>
+                        </article>
+                        <img
+                          className="w-[20px] cursor-pointer"
+                          src={xmark}
+                          alt="Remove"
+                          onClick={() =>
+                            handleRemoveFromCart(product.productId)
+                          }
+                        />
+                      </article>
+                    ))}
+
+                    <div className="flex justify-between py-2">
+                      <p>Total Price:</p>
+                      <p>
+                        $
+                        {cart
+                          .reduce((total, product) => {
+                            return (
+                              total +
+                              parseFloat(
+                                product.prices[0].regularPrice.minPrice
+                              )
+                            );
+                          }, 0)
+                          .toFixed(2)}
+                      </p>
+                    </div>
+                  </>
                 ) : (
-                  <p>No items in cart yet.</p>
+                  <p className="">No items in cart yet.</p>
                 )}
-              </ul>
+              </section>
             </section>
           </article>
         )}
@@ -127,9 +155,7 @@ const Products = () => {
 
       <section className="flex flex-wrap justify-center gap-[20px]">
         {hasProducts ? (
-          filteredProducts.map((info) => (
-            <Card key={info.productId} data={info} />
-          ))
+          filteredProducts.map((info) => <Card key={info.webID} data={info} />)
         ) : loading ? (
           <ClimbingBoxLoader color="#2D3748" size={20} />
         ) : (

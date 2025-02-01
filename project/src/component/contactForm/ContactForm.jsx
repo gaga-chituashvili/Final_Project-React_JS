@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const [errors, setErrors] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const patterns = {
@@ -27,25 +27,25 @@ const ContactForm = () => {
       [name]: value,
     });
 
-    if (name === 'name' && !patterns.name.test(value)) {
+    if (name === "name" && !patterns.name.test(value)) {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        name: 'Name must be between 1 and 12 characters and alphanumeric.',
+        name: "Name must be between 1 and 12 characters and alphanumeric.",
       }));
-    } else if (name === 'email' && !patterns.email.test(value)) {
+    } else if (name === "email" && !patterns.email.test(value)) {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        email: 'Please enter a valid email.',
+        email: "Please enter a valid email.",
       }));
-    } else if (name === 'message' && !patterns.message.test(value)) {
+    } else if (name === "message" && !patterns.message.test(value)) {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        message: 'Message must be between 1 and 150 characters.',
+        message: "Message must be between 1 and 150 characters.",
       }));
     } else {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        [name]: '',
+        [name]: "",
       }));
     }
   };
@@ -54,12 +54,17 @@ const ContactForm = () => {
     e.preventDefault();
 
     const isValid =
-      !errors.name && !errors.email && !errors.message && formData.name && formData.email && formData.message;
+      !errors.name &&
+      !errors.email &&
+      !errors.message &&
+      formData.name &&
+      formData.email &&
+      formData.message;
 
     if (!isValid) {
-      alert('Please fill out all fields correctly.');
+      alert("Please fill out all fields correctly.");
     } else {
-      alert('Form submitted successfully!');
+      alert("Form submitted successfully!");
     }
   };
 
@@ -75,7 +80,11 @@ const ContactForm = () => {
         onChange={handleChange}
         placeholder="Name"
         className={`w-full h-[30px] border rounded-[10px] bg-slate-200 p-2 ${
-          errors.name ? 'border-red-500' : formData.name ? 'border-green-500' : 'border-black'
+          errors.name
+            ? "border-red-500"
+            : formData.name
+            ? "border-green-500"
+            : "border-black"
         }`}
       />
       {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
@@ -87,7 +96,11 @@ const ContactForm = () => {
         onChange={handleChange}
         placeholder="Email"
         className={`w-full h-[30px] border rounded-[10px] bg-slate-200 p-2 ${
-          errors.email ? 'border-red-500' : formData.email ? 'border-green-500' : 'border-black'
+          errors.email
+            ? "border-red-500"
+            : formData.email
+            ? "border-green-500"
+            : "border-black"
         }`}
       />
       {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
@@ -98,10 +111,16 @@ const ContactForm = () => {
         onChange={handleChange}
         placeholder="Message"
         className={`w-full h-[80px] border resize-none rounded-[10px] bg-slate-200 p-2 ${
-          errors.message ? 'border-red-500' : formData.message ? 'border-green-500' : 'border-black'
+          errors.message
+            ? "border-red-500"
+            : formData.message
+            ? "border-green-500"
+            : "border-black"
         }`}
       />
-      {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
+      {errors.message && (
+        <p className="text-red-500 text-sm">{errors.message}</p>
+      )}
 
       <button
         type="submit"
