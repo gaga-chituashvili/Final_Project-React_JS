@@ -4,7 +4,7 @@ export async function productApi() {
       {
         method: "GET",
         headers: {
-          'x-rapidapi-key': 'c0a7f3c104msh8b91d66fdf2ef76p185c6djsn0795cba25ed9',
+          'x-rapidapi-key': '440e7b5462msh7008c9a84159ab0p1e34c7jsn44a447782ed9',
           'x-rapidapi-host': 'kohls.p.rapidapi.com'
         }
       }

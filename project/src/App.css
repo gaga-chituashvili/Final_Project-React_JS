@@ -70,6 +70,9 @@
     .footer{
        padding-inline: 70px;
     }
+    .app{
+        padding-top: 90px;
+    }
 }
 
 @media(max-width:481px){

@@ -27,3 +27,9 @@ export const LoadingAction = (payload) => {
 export const AddToCartAction = (product) => {
   return { type: Actions.ADD_TO_CART, payload: product };
 };
+
+export const RemoveFromCartAction = (productId) => ({
+  type: Actions.RemoveFromCartAction,
+  payload: productId,
+});
+

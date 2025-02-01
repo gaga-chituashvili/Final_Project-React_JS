@@ -5,7 +5,8 @@ const LOG_OUT="LOG_OUT";
 const DATA="DATA";
 const ERORR="ERROR";
 const LOADING="LOADING";
-const  ADD_TO_CART=" ADD_TO_CART";
+// const  ADD_TO_CART=" ADD_TO_CART";
+const  RemoveFromCartAction=" RemoveFromCartAction";
 
 export const Actions={
     AUTHENTICATE,
@@ -15,5 +16,6 @@ export const Actions={
     ERORR,
     LOADING,
     REGISTER,
-    ADD_TO_CART,
+    // ADD_TO_CART,
+    RemoveFromCartAction,
 }

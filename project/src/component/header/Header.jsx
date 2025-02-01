@@ -8,12 +8,18 @@ import { routes } from '../../constant/route';
 import {authAction} from "../../constant/authAction"
 import burger from "../header/headerimg/burger.svg"
 
+
 const Header = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");  
-  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();  
+  const [menuOpen, setMenuOpen] = useState(false);
+
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,9 +50,7 @@ const Header = () => {
     }
   };
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen); 
-  };
+
 
   return (
     <header
@@ -57,7 +61,7 @@ const Header = () => {
       <Link className='logo text-[50px] text-red-500 border-2 border-solid border-red-500 p-[10px] rounded-[10px]' to={routes.home}>
         Kolh's
       </Link>
-      <Navbar isMobileMenuOpen={menuOpen} />
+      <Navbar />
       <section className='flex items-center gap-x-[20px]'>
         <form onSubmit={handleSearchSubmit}>
           <input
@@ -68,25 +72,24 @@ const Header = () => {
           />
         </form>
         <AuthUpIn />
-        <img 
-          className='burger w-[50px] cursor-pointer' 
-          src={burger} 
-          alt="Burger Menu" 
-          onClick={toggleMenu}
-        />
+          <img
+                className="burger w-[50px] cursor-pointer "
+                src={burger}
+                alt="Burger Menu"
+                onClick={toggleMenu}
+              />
       </section>
+     <article 
+             className={`w-[200px] absolute top-[111px] right-0  bg-slate-700 p-4  flex flex-col items-center transition-all duration-500 
+               ${menuOpen ? 'transform translate-x-0' : 'transform translate-x-full'}`}
+           >
+             <Link to={routes.home} className="cursor-pointer text-[20px] px-6 py-3 text-white rounded-lg hover:bg-red-500 ">Home</Link>
+             <Link to={routes.products} className="cursor-pointer text-[20px] px-6 py-3 text-white rounded-lg hover:bg-red-500">Products</Link>
+             <Link to={routes.contact} className="cursor-pointer text-[20px] px-6 py-3 text-white rounded-lg hover:bg-red-500">Contact</Link>
+             <Link to={authAction.signIn} className="cursor-pointer text-[20px] px-6 py-3 text-white rounded-lg hover:bg-red-500">Sign In</Link>
+             <Link to={authAction.signUp} className="cursor-pointer text-[20px] px-6 py-3 text-white rounded-lg hover:bg-red-500">Sign Up</Link>
+           </article>
 
-      
-      <article 
-        className={`w-[200px] absolute top-[111px] right-0  bg-slate-700 p-4  flex flex-col items-center transition-all duration-500 
-          ${menuOpen ? 'transform translate-x-0' : 'transform translate-x-full'}`}
-      >
-        <Link to={routes.home} className="cursor-pointer text-[20px] px-6 py-3 text-white rounded-lg hover:bg-red-500 ">Home</Link>
-        <Link to={routes.products} className="cursor-pointer text-[20px] px-6 py-3 text-white rounded-lg hover:bg-red-500">Products</Link>
-        <Link to={routes.contact} className="cursor-pointer text-[20px] px-6 py-3 text-white rounded-lg hover:bg-red-500">Contact</Link>
-        <Link to={authAction.signIn} className="cursor-pointer text-[20px] px-6 py-3 text-white rounded-lg hover:bg-red-500">Sign In</Link>
-        <Link to={authAction.signUp} className="cursor-pointer text-[20px] px-6 py-3 text-white rounded-lg hover:bg-red-500">Sign Up</Link>
-      </article>
     </header>
   );
 }
