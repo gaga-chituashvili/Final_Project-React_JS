@@ -69,6 +69,12 @@
   .app {
     padding-top: 90px;
   }
+  .logout_cart{
+    flex-direction: column;
+    row-gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 @media (max-width: 481px) {

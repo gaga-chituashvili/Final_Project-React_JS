@@ -71,7 +71,7 @@ const ContactForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-[400px] flex flex-col gap-y-[20px] border border-solid border-black p-[40px] rounded-[15px] bg-slate-600"
+      className="w-[400px] flex flex-col gap-y-[15px] border border-solid border-slate-700 p-[30px] rounded-[15px] bg-slate-500 shadow-lg transition-all duration-300 ease-in-out hover:scale-105 "
     >
       <input
         type="text"
@@ -79,7 +79,7 @@ const ContactForm = () => {
         value={formData.name}
         onChange={handleChange}
         placeholder="Name"
-        className={`w-full h-[30px] border rounded-[10px] bg-slate-200 p-2 ${
+        className={`h-[40px] rounded-[8px] border border-solid  px-3 focus:outline-none bg-slate-200 focus:ring-2 focus:ring-slate-500 focus:border-slate-500 transition-all duration-300 ease-in-out ${
           errors.name
             ? "border-red-500"
             : formData.name
@@ -95,7 +95,7 @@ const ContactForm = () => {
         value={formData.email}
         onChange={handleChange}
         placeholder="Email"
-        className={`w-full h-[30px] border rounded-[10px] bg-slate-200 p-2 ${
+        className={`h-[40px] rounded-[8px] border border-solid px-3 focus:outline-none bg-slate-200 focus:ring-2 focus:ring-slate-500 focus:border-slate-500 transition-all duration-300 ease-in-out ${
           errors.email
             ? "border-red-500"
             : formData.email
@@ -110,7 +110,7 @@ const ContactForm = () => {
         value={formData.message}
         onChange={handleChange}
         placeholder="Message"
-        className={`w-full h-[80px] border resize-none rounded-[10px] bg-slate-200 p-2 ${
+        className={`w-full h-[80px]  rounded-[8px] border border-solid px-3 focus:outline-none bg-slate-200 focus:ring-2 focus:ring-slate-500 focus:border-slate-500 transition-all duration-300 ease-in-out resize-none ${
           errors.message
             ? "border-red-500"
             : formData.message
@@ -122,12 +122,13 @@ const ContactForm = () => {
         <p className="text-red-500 text-sm">{errors.message}</p>
       )}
 
-      <button
-        type="submit"
-        className="hover:bg-red-500 px-[10px] py-[10px] rounded-2xl"
-      >
-        SUBMIT
-      </button>
+<button
+  type="submit"
+  className="px-[20px] py-[10px] bg-slate-700 text-white font-semibold rounded-2xl transform transition duration-300 ease-in-out hover:bg-red-500 hover:scale-105 hover:shadow-xl hover:rotate-2 active:scale-95"
+>
+  SUBMIT
+</button>
+
     </form>
   );
 };

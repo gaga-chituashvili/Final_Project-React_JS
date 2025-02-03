@@ -55,16 +55,17 @@ const Header = () => {
       }`}
     >
       <Link
-        className="logo text-[50px] text-red-500 border-2 border-solid border-red-500 p-[10px] rounded-[10px]"
+        className="logo text-[50px] text-red-500 border-2 border-solid border-red-500 p-[10px] rounded-[10px] transition-all duration-300 hover:text-white hover:bg-red-500 hover:border-white"
         to={routes.home}
       >
         Kolh's
       </Link>
+
       <Navbar />
       <section className="flex items-center gap-x-[20px]">
         <form onSubmit={handleSearchSubmit}>
           <input
-            className="w-[300px] h-[30px] rounded-[30px] bg-slate-500 placeholder:text-white header_input"
+            className="w-[300px] h-[40px] rounded-[30px] text-white bg-slate-500 placeholder:text-white header_input focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-300"
             placeholder="Search Product"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -88,31 +89,31 @@ const Header = () => {
       >
         <Link
           to={routes.home}
-          className="cursor-pointer text-[20px] px-6 py-3 text-white rounded-lg hover:bg-red-500 "
+          className="cursor-pointer px-6 py-3 text-white rounded-lg hover:bg-red-500  hover:scale-120  transition-all duration-300 ease-in-out "
         >
           Home
         </Link>
         <Link
           to={routes.products}
-          className="cursor-pointer text-[20px] px-6 py-3 text-white rounded-lg hover:bg-red-500"
+          className="cursor-pointer px-6 py-3 text-white rounded-lg hover:bg-red-500  hover:scale-120  transition-all duration-300 ease-in-out"
         >
           Products
         </Link>
         <Link
           to={routes.contact}
-          className="cursor-pointer text-[20px] px-6 py-3 text-white rounded-lg hover:bg-red-500"
+          className="cursor-pointer px-6 py-3 text-white rounded-lg hover:bg-red-500  hover:scale-120  transition-all duration-300 ease-in-out"
         >
           Contact
         </Link>
         <Link
           to={authAction.signIn}
-          className="cursor-pointer text-[20px] px-6 py-3 text-white rounded-lg hover:bg-red-500"
+          className="cursor-pointer px-6 py-3 text-white rounded-lg hover:bg-red-500  hover:scale-120  transition-all duration-300 ease-in-out"
         >
           Sign In
         </Link>
         <Link
           to={authAction.signUp}
-          className="cursor-pointer text-[20px] px-6 py-3 text-white rounded-lg hover:bg-red-500"
+          className="cursor-pointer px-6 py-3 text-white rounded-lg hover:bg-red-500  hover:scale-120  transition-all duration-300 ease-in-out"
         >
           Sign Up
         </Link>

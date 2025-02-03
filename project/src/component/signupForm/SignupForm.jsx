@@ -42,42 +42,46 @@ const SignupForm = () => {
   return (
     <section className="flex flex-col items-center gap-y-[30px]">
       <form
-        className="w-[400px] flex flex-col gap-y-[10px] border border-solid border-black p-[40px] rounded-[20px] bg-slate-300"
+        className="w-[400px] flex flex-col gap-y-[15px] border border-solid border-gray-300 p-[30px] rounded-[15px] bg-slate-300 shadow-lg transition-all duration-300 ease-in-out hover:scale-105 "
         onSubmit={submitHandler}
       >
-        <label>UserName</label>
+        <label className="text-sm text-gray-600 font-semibold">UserName</label>
         <input
-          className="h-[30px] rounded-[10px] border border-solid border-black"
+          className="h-[40px] rounded-[8px] border border-solid border-slate-100 bg-slate-100 px-3 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500 transition-all duration-300 ease-in-out"
           name="userName"
           onChange={(e) => {
             setuser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
           }}
         />
-        <label>Email</label>
+
+        <label className="text-sm text-gray-600 font-semibold">Email</label>
         <input
-          className="h-[30px] rounded-[10px] border border-solid border-black bg-slate-100"
+          className="h-[40px] rounded-[8px] border border-solid border-slate-100 bg-slate-100 px-3 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500 transition-all duration-300 ease-in-out"
           type="text"
           name="email"
           onChange={(e) => {
             setuser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
           }}
         />
-        <label>Password</label>
+
+        <label className="text-sm text-gray-600 font-semibold">Password</label>
         <input
-          className="h-[30px] rounded-[10px] border border-solid border-black bg-slate-100"
+          className="h-[40px] rounded-[8px] border border-solid border-slate-100 bg-slate-100 px-3 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500 transition-all duration-300 ease-in-out"
           type="password"
           name="password"
           onChange={(e) => {
             setuser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
           }}
         />
+
         <button
-          className="hover:bg-red-500 px-[10px] py-[10px] rounded-2xl"
+          className="bg-slate-700 hover:bg-slate-500 text-white font-semibold py-2 px-4 rounded-xl transition-all duration-300 ease-in-out hover:scale-105"
           type="submit"
         >
           Submit
         </button>
       </form>
+
       {loading && <ClimbingBoxLoader color="#2D3748" size={20} />}
     </section>
   );

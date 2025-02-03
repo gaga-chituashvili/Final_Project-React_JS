@@ -13,7 +13,7 @@ const Navbar = () => {
       <ul className="header_ul flex gap-x-[30px] text-[30px]">
         {Approutes.map(([key, value]) => (
           <li
-            className="cursor-pointer px-6 py-3 text-white rounded-lg hover:bg-red-500"
+            className="cursor-pointer px-6 py-3 text-white rounded-lg hover:bg-red-500  hover:scale-120  transition-all duration-300 ease-in-out"
             key={key}
             onClick={() => navigate(value)}
           >

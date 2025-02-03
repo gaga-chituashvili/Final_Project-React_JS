@@ -13,7 +13,7 @@ const AuthUpIn = () => {
       <ul className="flex gap-x-[10px] text-[20px] rounded-2xl bg-slate-500">
         {Approutes.map(([key, value]) => (
           <li
-            className="sign cursor-pointer px-2 py-2 text-white rounded-lg hover:bg-red-500"
+            className="sign cursor-pointer px-6 py-3 text-white rounded-lg hover:bg-red-500  hover:scale-120  transition-all duration-300 ease-in-out"
             key={key}
             onClick={() => navigate(value)}
           >
