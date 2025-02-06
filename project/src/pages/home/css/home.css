@@ -1,0 +1,49 @@
+.title_article {
+    text-align: center;
+    text-shadow: 0 0 10px black;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: slideIn 3s ease-out forwards, typing 5s steps(50) 2s infinite;
+    z-index: 1;
+  }
+  
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translatex(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translatex(0);
+    }
+  }
+  
+  @keyframes typing {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
+  
+  .title::after {
+    content: "|";
+    animation: blink 0.7s steps(1) infinite;
+  }
+  
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+
+  .brand{
+    overflow-x: scroll;
+  }
